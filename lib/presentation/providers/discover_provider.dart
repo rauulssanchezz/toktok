@@ -16,8 +16,12 @@ class DiscoverProvider extends ChangeNotifier {
   });
   
   Future<void> loadNextPage() async {
-    List<VideoPost> newVideos;
+    List<VideoPost> newVideos = [];
     try {
+      if (newVideos.isNotEmpty || videos.isNotEmpty) {
+        newVideos.clear();
+        videos.clear();
+      }
       newVideos = await videosRepository.getTrendingVideosByPage(_currentPage);
       errorMessage = null;
     } catch (e) {
