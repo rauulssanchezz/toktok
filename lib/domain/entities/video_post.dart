@@ -3,7 +3,7 @@ class VideoPost {
   final Uri videoUrl;
   final int likes;
   final int views;
-  final String image; // ahora es String para la url
+  final String image;
   
   VideoPost({
     required this.caption, 

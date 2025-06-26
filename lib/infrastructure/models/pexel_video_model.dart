@@ -49,7 +49,7 @@ class PexelVideoModel {
       return VideoPost(
         videoUrl: Uri.parse(videoLink),
         caption: '${user.name} - ${tags.join(', ')}',
-        image: image // ahora pasa la url real
+        image: image
       );
     }
 

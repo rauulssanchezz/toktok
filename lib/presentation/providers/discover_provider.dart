@@ -16,7 +16,6 @@ class DiscoverProvider extends ChangeNotifier {
   });
 
   Future<void> loadNextPage({String search = ''}) async {
-    // Si el término de búsqueda cambió, reinicia la lista y la página
     if (search != _currentSearch) {
       _currentSearch = search;
       _currentPage = 1;
