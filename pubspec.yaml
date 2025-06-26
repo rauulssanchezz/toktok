@@ -39,7 +39,6 @@ dependencies:
   animate_do: ^4.2.0
   video_player: ^2.10.0
   http: ^1.4.0
-  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -64,8 +63,7 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - .env
+  # assets:
   #   - assets/videos/
   #   - images/a_dot_ham.jpeg
 
