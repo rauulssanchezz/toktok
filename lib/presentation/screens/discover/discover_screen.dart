@@ -57,16 +57,23 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
               bottom: 60,
               left: 20,
               right: 20,
-              child: SizedBox(
-                width: double.infinity,
-                child: SearchWidget(
-                  onValue: (String value) {
-                    discoverProvider.loadNextPage(search: value);
-                    setState(() {
-                      showSearch = false;
-                    });
-                  },
-                  focusNode: searchFocusNode,
+              child: TapRegion(
+                onTapOutside: (_) {
+                  setState(() {
+                    showSearch = false;
+                  });
+                },
+                child: SizedBox(
+                  width: double.infinity,
+                  child: SearchWidget(
+                    onValue: (String value) {
+                      discoverProvider.loadNextPage(search: value);
+                      setState(() {
+                        showSearch = false;
+                      });
+                    },
+                    focusNode: searchFocusNode,
+                  ),
                 ),
               ),
             ),
