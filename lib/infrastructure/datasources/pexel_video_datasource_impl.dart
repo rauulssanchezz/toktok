@@ -17,8 +17,8 @@ class PexelVideoDatasourceImpl implements VideoPostDataSource {
   }
 
   @override
-  Future<List<VideoPost>> getTrendingVideosByPage(int page) async {
-    final String query = 'trending';
+  Future<List<VideoPost>> getTrendingVideosByPage(int page, String search) async {
+    final String query = search != '' ? search : 'trending';
     final String orientation = 'portrait';
     final String size = 'medium';
 

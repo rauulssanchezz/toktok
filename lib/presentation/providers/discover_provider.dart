@@ -7,30 +7,35 @@ class DiscoverProvider extends ChangeNotifier {
 
   bool initialLoading = true;
   List<VideoPost> videos = [];
-  
   int _currentPage = 1;
   String? errorMessage;
+  String _currentSearch = '';
 
   DiscoverProvider({
     required this.videosRepository
   });
-  
-  Future<void> loadNextPage() async {
-    List<VideoPost> newVideos = [];
+
+  Future<void> loadNextPage({String search = ''}) async {
+    // Si el término de búsqueda cambió, reinicia la lista y la página
+    if (search != _currentSearch) {
+      _currentSearch = search;
+      _currentPage = 1;
+      videos.clear();
+      initialLoading = true;
+    }
     try {
-      if (newVideos.isNotEmpty || videos.isNotEmpty) {
-        newVideos.clear();
-        videos.clear();
-      }
-      newVideos = await videosRepository.getTrendingVideosByPage(_currentPage);
+      final newVideos = await videosRepository.getTrendingVideosByPage(_currentPage, _currentSearch);
       errorMessage = null;
+      if (_currentPage == 1) {
+        videos = newVideos;
+      } else {
+        videos.addAll(newVideos);
+      }
+      _currentPage++;
     } catch (e) {
       errorMessage = 'No se encuentran resultados en este momento.';
-      newVideos = [];
+      if (_currentPage == 1) videos = [];
     }
-    _currentPage++;
-
-    videos.addAll(newVideos);
     initialLoading = false;
     notifyListeners();
   }

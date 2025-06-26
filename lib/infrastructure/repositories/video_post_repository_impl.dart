@@ -16,9 +16,9 @@ class VideoPostRepositoryImpl implements VideoPostRepository {
   }
 
   @override
-  Future<List<VideoPost>> getTrendingVideosByPage(int page) {
+  Future<List<VideoPost>> getTrendingVideosByPage(int page, String search) {
     try {
-      return videosDataSource.getTrendingVideosByPage(page);
+      return videosDataSource.getTrendingVideosByPage(page, search);
     } catch (e) {
       rethrow;
     }
