@@ -16,7 +16,7 @@ class SearchWidget extends StatelessWidget {
     );
 
     final inputDecoration = InputDecoration(
-      hintText: 'Write something!',
+      hintText: 'Look for something!',
         enabledBorder: outlineInputBorder,
         focusedBorder: outlineInputBorder,
         filled: true,
