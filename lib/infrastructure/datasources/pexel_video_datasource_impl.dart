@@ -1,5 +1,5 @@
-
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:toktok/domain/datasources/video_post_datasource.dart';
 import 'package:toktok/domain/entities/video_post.dart';
@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:toktok/infrastructure/models/pexel_video_model.dart';
 
 class PexelVideoDatasourceImpl implements VideoPostDataSource {
-  final String _apiKey = 'w6xuC1d3218WP9wr5OKf6ev3kb8O7LVmbIYbIUW83A86syd2zlFozfiK';
+  final String _apiKey = dotenv.env['PEXELS_API_KEY'] ?? '';
   final List<VideoPost> _newVideos = [];
   final int _perPage = 15;
 
