@@ -54,7 +54,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
 
           if (showSearch)
             Positioned(
-              bottom: 60,
+              bottom: 0,
               left: 20,
               right: 20,
               child: TapRegion(
